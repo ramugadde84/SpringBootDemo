@@ -1,5 +1,6 @@
 package com.sample.test.TestDemo;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScanPackages;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -27,6 +28,18 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class PersistenceConfig {
 
+    @Value("${jdbc.url}")
+    private String jdbcUrl;
+
+    @Value("${jdbc.driverClassName}")
+    private String driverClassName;
+
+    @Value("${jdbc.username}")
+    private String username;
+
+    @Value("${jdbc.password}")
+    private String password;
+
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em
@@ -46,10 +59,10 @@ public class PersistenceConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-        dataSource.setUsername("system");
-        dataSource.setPassword("system");
+        dataSource.setDriverClassName(driverClassName);
+        dataSource.setUrl(jdbcUrl);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
         return dataSource;
     }
 
@@ -69,7 +82,7 @@ public class PersistenceConfig {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+
         properties.setProperty(
                 "hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 
