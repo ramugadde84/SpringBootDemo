@@ -11,8 +11,9 @@ public class UserInformationEntity implements Serializable {
 
     @Id
     @Column(name = "user_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_name_seq")
-    @SequenceGenerator(name = "user_name_seq", sequenceName = "user_name_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /*@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_name_seq")
+    @SequenceGenerator(name = "user_name_seq", sequenceName = "user_name_seq", allocationSize = 1)*/
     private Long id;
 
     @Column(name = "USERNAME")

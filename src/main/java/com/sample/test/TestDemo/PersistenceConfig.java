@@ -84,7 +84,7 @@ public class PersistenceConfig {
         Properties properties = new Properties();
 
         properties.setProperty(
-                "hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+                "hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 
 
         return properties;

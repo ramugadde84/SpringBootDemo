@@ -6,7 +6,7 @@
 	<groupId>com.sample.test</groupId>
 	<artifactId>SpringBootDemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>SpringBootDemo</name>
 	<description>Demo project for Spring Boot</description>
@@ -59,11 +59,17 @@
 		</dependency>
 
 
-		<dependency>
+		<!--<dependency>
 			<artifactId>com.oracle</artifactId>
 			<groupId>ojdbc6</groupId>
 			<scope>system</scope>
 			<systemPath>${basedir}/src/main/resources/ojdbc6-11.jar</systemPath>
+		</dependency>-->
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.13</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
